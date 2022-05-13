@@ -1,7 +1,7 @@
 package com.example.e3stpavel.knorders.assembler;
 
-import com.example.e3stpavel.knorders.controller.OrderController;
-import com.example.e3stpavel.knorders.entity.Order;
+import com.example.e3stpavel.knorders.controller.CustomerController;
+import com.example.e3stpavel.knorders.entity.Customer;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
@@ -10,11 +10,10 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
-public class OrderAssembler implements RepresentationModelAssembler<Order, EntityModel<Order>> {
+public class CustomerAssembler implements RepresentationModelAssembler<Customer, EntityModel<Customer>> {
     @Override
-    public EntityModel<Order> toModel(Order entity) {
+    public EntityModel<Customer> toModel(Customer entity) {
         return EntityModel.of(entity,
-                linkTo(methodOn(OrderController.class).all()).withRel("orders"))
-        ;
+                linkTo(methodOn(CustomerController.class).all()).withRel("customers"));
     }
 }

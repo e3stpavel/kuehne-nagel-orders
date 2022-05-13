@@ -25,6 +25,7 @@ public class Customer {
     private String email;
 
     @Column(name = "phone", nullable = false)
-    @Pattern(regexp="^(\\\\+\\\\d{1,3}( )?)?(\\\\d{3}[ ]?)(\\\\d{2}[ ]?){2}\\\\d{2}$")
+    @Pattern(regexp="\\(?\\+[0-9]{1,3}\\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})? ?(\\w{1,10}\\s?\\d{1,6})?",
+            message = "Provided phone number is not valid")
     private String phone;
 }

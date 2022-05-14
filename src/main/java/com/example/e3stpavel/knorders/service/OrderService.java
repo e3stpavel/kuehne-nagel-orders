@@ -62,4 +62,14 @@ public class OrderService implements BasicService<Order> {
     public EntityModel<Order> add(Order order) {
         return orderAssembler.toModel(orderRepository.save(order));
     }
+
+    @Override
+    public EntityModel<Order> getOne(int id) {
+        if (orderRepository.findById(id).isEmpty())
+            return null;
+
+        return orderAssembler.toModel(
+                orderRepository.findById(id).get()
+        );
+    }
 }

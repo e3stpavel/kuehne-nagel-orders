@@ -35,6 +35,11 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getAllByDate(isoDate), HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> one(@PathVariable("id") int id) {
+        return new ResponseEntity<>(orderService.getOne(id), HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<?> add(@Valid @RequestBody Order order) {
         EntityModel<Order> orderEntityModel = orderService.add(order);

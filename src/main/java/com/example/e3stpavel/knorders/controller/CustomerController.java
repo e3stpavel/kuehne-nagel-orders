@@ -26,6 +26,11 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> one(@PathVariable("id") int id) {
+        return new ResponseEntity<>(customerService.getOne(id), HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<?> add(@Valid @RequestBody Customer customer) {
         EntityModel<Customer> customerEntityModel = customerService.add(customer);

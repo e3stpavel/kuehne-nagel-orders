@@ -11,12 +11,12 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @Column(name = "order_line", nullable = false)
-    private List<OrderLine> orderLine;
+    @Column(name = "order_lines", nullable = false)
+    private List<OrderLine> orderLines;
 
     @OneToOne
     @JoinColumn(name = "customer", nullable = false)

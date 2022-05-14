@@ -44,4 +44,14 @@ public class ProductService implements BasicService<Product> {
     public EntityModel<Product> add(Product product) {
         return productAssembler.toModel(productRepository.save(product));
     }
+
+    @Override
+    public EntityModel<Product> getOne(int id) {
+        if (productRepository.findById(id).isEmpty())
+            return null;
+
+        return productAssembler.toModel(
+                productRepository.findById(id).get()
+        );
+    }
 }

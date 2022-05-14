@@ -26,12 +26,17 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> one(@PathVariable("id") int id) {
+        return new ResponseEntity<>(productService.getOne(id), HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<?> add(@Valid @RequestBody Product product) {
         EntityModel<Product> productEntityModel = productService.add(product);
 
         return ResponseEntity
-                .created(productEntityModel.getRequiredLink((IanaLinkRelations.SELF)).toUri())
+                .created(productEntityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(productEntityModel);
     }
 }

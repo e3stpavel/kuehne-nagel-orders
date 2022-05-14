@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "order_lines")
 public class OrderLine {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "quantity", nullable = false)

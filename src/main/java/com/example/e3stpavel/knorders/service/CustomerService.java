@@ -44,4 +44,14 @@ public class CustomerService implements BasicService<Customer> {
     public EntityModel<Customer> add(Customer customer) {
         return customerAssembler.toModel(customerRepository.save(customer));
     }
+
+    @Override
+    public EntityModel<Customer> getOne(int id) {
+        if (customerRepository.findById(id).isEmpty())
+            return null;
+
+        return customerAssembler.toModel(
+                customerRepository.findById(id).get()
+        );
+    }
 }

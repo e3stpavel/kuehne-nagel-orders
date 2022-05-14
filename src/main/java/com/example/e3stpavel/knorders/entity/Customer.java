@@ -11,7 +11,7 @@ import javax.validation.constraints.Pattern;
 @Table(name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "full_name", nullable = false)
